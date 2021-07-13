@@ -40,22 +40,38 @@ function storage(action, element) {
          break;
         
          case "fetch": //case fetch retrieves the info from local storage and 
-
+            var id;
             for (var i = 0; i < 9; i++) {
                 noteIdArray[i] = $("textarea[data-index='" + i +"']").attr('id');
                 console.log(noteIdArray[i]+"<<idarray");
                 console.log(i+"<<i for index");
+
+                id = noteIdArray[i];
+                
+                if (localStorage.getItem(id)) {
+                    $("textarea[data-index='" + i +"']").text(localStorage.getItem(id));
+                    
+                    console.log(localStorage.getItem(id)+"<<-======localstoragegetitem");
+                    
+                }
             }
+            
+            /*
+            console.log(noteIdArray[i]+"<<idarray");
             var id = "";
             //noteIdArray = ["9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm"];
             for (var i = 0; i < noteIdArray.length; i++ ) {
                 id = noteIDArray[i];
+                
                 if (localStorage.getItem(id)) {
                     $(id).value = localStorage.getItem(id);
-                    console.log(localStorage.getItem(id));
+                    console.log(localStorage.getItem(id)+"<<-======localstoragegetitem");
+                    
                 }
+
+                console.log(localStorage.getItem(id)+"<<-======localstoragegetitem");
                 
-            }
+            }*/
             
 
         break;
