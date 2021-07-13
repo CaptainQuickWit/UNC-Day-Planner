@@ -13,12 +13,17 @@ textarea{
   padding: 10px;
 }
 
+.roundedCorner {
+  border-radius: 25x;
+  border: 2px solid #73AD21;
+}
+
 .hide {
   display: none;
 }
 
 .bordertest, * {
-  border-radius: 10px;
+  border-radius: 25px;
   border: 2px solid #73AD21;
 }
 
