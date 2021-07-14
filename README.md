@@ -6,6 +6,7 @@ Create a simple calendar application that allows a user to save events for each 
 
 You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
 
+deloyed link: https://captainquickwit.github.io/UNC-Day-Planner/
 
 ![Screen Shot 2021-07-14 at 3 54 40 AM](https://user-images.githubusercontent.com/73507926/125585318-d49678a5-0cc2-4dbd-8bfc-82d7f66bb840.png)
 
