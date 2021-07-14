@@ -1,22 +1,25 @@
 
 $(document).ready(start);
-var timeblocks = $('textarea').get();
+var textAreaArray = $('textarea').get();
 var date;
 var noteIdArray = [];
+var time = new Date().getHours();
+//var textAreaArray = document.getElementsByTagName("textarea");
 
+function start() {
+    date = moment().format('MMMM Do YYYY, h:mm:ss a');
+            //code
+            $('#date').html(`<h2>${date}</h2>`);
+            time = 10;
+            renderColor();
+            storage("fetch");
+
+}
 $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     currentEle = $(this);
     storage("save",currentEle);
 });
-
-function start() {
-    date = moment().format("MMM Do YY");
-            //code
-            $('#date').html(`<h2>${date}</h2>`);
-            storage("fetch");
-
-}
 
 function storage(action, element) {
     var index = 0;
@@ -41,10 +44,22 @@ function storage(action, element) {
         
          case "fetch": //case fetch retrieves the info from local storage and 
             var id;
+            var array;
+            var eleAttr;
+
             for (var i = 0; i < 9; i++) {
+                var ele = $("textarea[data-index='" + i +"']");
                 noteIdArray[i] = $("textarea[data-index='" + i +"']").attr('id');
+                eleAttr = $("textarea[data-index='" + i +"']").attr('data-militaryTime');
+
+                renderColor(ele, eleAttr);
+
+
+                console.log(">>>>>>eleATTR>>>>>"+eleAttr+">>>>time>>>>"+time);
+                //array = $("textarea[data-militaryTime]);
                 console.log(noteIdArray[i]+"<<idarray");
                 console.log(i+"<<i for index");
+                //getAttribute('data-type')
 
                 id = noteIdArray[i];
                 
@@ -55,90 +70,37 @@ function storage(action, element) {
                     
                 }
             }
-            
-            /*
-            console.log(noteIdArray[i]+"<<idarray");
-            var id = "";
-            //noteIdArray = ["9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm"];
-            for (var i = 0; i < noteIdArray.length; i++ ) {
-                id = noteIDArray[i];
-                
-                if (localStorage.getItem(id)) {
-                    $(id).value = localStorage.getItem(id);
-                    console.log(localStorage.getItem(id)+"<<-======localstoragegetitem");
-                    
-                }
 
-                console.log(localStorage.getItem(id)+"<<-======localstoragegetitem");
-                
-            }*/
-            
 
         break;
     }
 }
 
 function getData(){
-    for (var j = 0; j < localStorage.length; j++) {
-      var keyNumbers = localStorage.key(j);
-      timeblocks.forEach(function(item) {
-        if (item.dataset.number == keyNumbers) {
-        item.value = localStorage.getItem(keyNumbers)
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      textAreaArray.forEach(function(ele) {
+        if (ele.dataset.number == key) {
+            ele.value = localStorage.getItem(key)
         }
       })   
     }
 }
 
-/*
 
-var today = moment().format("dddd [|] LL [| Week] W");
+function renderColor(ele, eleAttr){
 
-// you can also use $("#currentDay").append(today); OR document.getElementById("currentDay").textContent = today;
-$("#currentDay").text(today);
-
-// moment.js
-var now = new Date().getHours();
-
-var timeblocks = Array.from(document.getElementsByTagName('textarea'));
-console.log(timeblocks);
-
-function getData(){
-    for (var j = 0; j < localStorage.length; j++) {
-      var keyNumbers = localStorage.key(j);
-      timeblocks.forEach(function(item) {
-        if (item.dataset.number == keyNumbers) {
-        item.value = localStorage.getItem(keyNumbers)
-        }
-      })   
-    }
-}
-
-getData();
-
-$(".saveBtn").on("click", function (event) {
-    event.preventDefault();
-    var notes = $(this).siblings("textarea").val();
-    var rowHourActive = $(this).siblings("textarea").data("number");
-    window.localStorage.setItem(rowHourActive, notes);
     
-});
-
-// you can also use: var timeblocks = [].slice.call(timeblocksHTML);
-
-
-function statusTimeblock(){
-    for (var i=0; i<timeblocks.length; i++) {
-        var singleT = timeblocks[i];
-        if (singleT.dataset.number == now) {
-            singleT.classList.add("present");
-        }
-        if (singleT.dataset.number < now) {
-            singleT.classList.add("past");
-        }
-        if (singleT.dataset.number > now) {
-            singleT.classList.add("future");
-        }  
+    if (eleAttr == time) {
+        ele.addClass("present");
+    }
+    if (eleAttr < time) {
+        ele.addClass("past");
+    }
+    if (eleAttr > time) {
+        ele.addClass("future");
     }  
+    
 }
-statusTimeblock();
-*/
+
+
