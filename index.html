@@ -37,6 +37,7 @@
         <div class = "d-flex flex-row justify-content-end">
           <main class = "container-fluid">
 
+            <!--each block the user can type notes into is organized into rows-->
               <div  class=" row">
                 <div class=" col-1">9:00am</div>
                 <textarea class="col-10" id = "9am" data-index=0 data-militaryTime=9 > </textarea>
@@ -45,18 +46,18 @@
                 
             <div  class=" row">
               <div class=" col-1 target">10:00am</div>
-              <textarea class="col-10" id="10am" data-index=1 data-militaryTime=10></textarea>
+              <textarea class="col-10" id="10am" data-index=1 data-militaryTime=10></textarea> <!-- this is where user puts in notes-->
               <button class="saveBtn col-1"></button>
             </div>
                 
             <div  class=" row">
               <div class=" col-1 target">11:00am</div>
               <textarea class="col-10" id="11am" data-index=2 data-militaryTime=11></textarea>
-              <button class="saveBtn col-1"></button>
+              <button class="saveBtn col-1"></button> <!--the submit button-->
             </div>
         
             <div  class=" row">
-              <div class=" col-1 target" >12:00pm</div>
+              <div class=" col-1 target" >12:00pm</div> <!--time slot-->
               <textarea class="col-10" data-index=3 id="12pm" data-militaryTime=12></textarea>
               <button class="saveBtn col-1"></button>
             </div>
@@ -100,7 +101,7 @@
     </div>
 
   </body>
-
+    <!--scripts needed to run the web app using jquery and moment.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
