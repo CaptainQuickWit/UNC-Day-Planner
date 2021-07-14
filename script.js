@@ -12,7 +12,7 @@ function start() {
     date = moment().format('MMMM Do YYYY, h:mm:ss a');
             //code
             $('#date').html(`<h2>${date}</h2>`);
-            time = 10;
+           
             renderColor();
             storage("fetch");
 }
